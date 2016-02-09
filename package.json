@@ -1,0 +1,46 @@
+{
+  "name": "flxtal",
+  "description": "flux fractal",
+  "version": "0.0.1",
+  "author": "fand",
+  "bugs": {
+    "url": "https://github.com/fand/flxtal/issues"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.5.1",
+    "espower-babel": "^3.3.0",
+    "isparta": "^3.1.0",
+    "mocha": "^2.3.3",
+    "power-assert": "^1.0.1",
+    "sinon": "^1.17.1"
+  },
+  "files": [
+    "README.md",
+    "package.json",
+    "bin",
+    "lib"
+  ],
+  "homepage": "https://github.com/fand/flxtal",
+  "keywords": [
+    "flux"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fand/flxtal.git"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "cover": "babel-node $(npm bin)/isparta cover --report text --report html _mocha",
+    "lint": "eslint src test",
+    "postversion": "git push && git push --tags && rm -rf lib",
+    "prepublish": "rm -rf lib && npm run lint && npm run test && npm run build",
+    "preversion": "rm -rf lib && npm run test",
+    "test": "mocha --compilers js:espower-babel/guess",
+    "travis": "npm run lint && npm run test",
+    "version": "npm run build"
+  }
+}
